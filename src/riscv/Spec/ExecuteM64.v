@@ -44,8 +44,8 @@ Definition execute {p : Type -> Type} {t : Type} `{Spec.Machine.RiscvMachine p
                         let b := Utility.Utility.s32 y in
                         let a := Utility.Utility.s32 x in
                         let q :=
-                          if andb (reg_eqb a (negate (ZToReg 2147483648))) (reg_eqb b (negate (ZToReg
-                                                                                               1))) : bool
+                          if andb (reg_eqb a Utility.Utility.minSigned32) (reg_eqb b (negate (ZToReg
+                                                                                              1))) : bool
                           then a else
                           if reg_eqb b (ZToReg 0) : bool then negate (ZToReg 1) else
                           div a b in
@@ -65,8 +65,8 @@ Definition execute {p : Type -> Type} {t : Type} `{Spec.Machine.RiscvMachine p
                         let b := Utility.Utility.s32 y in
                         let a := Utility.Utility.s32 x in
                         let r :=
-                          if andb (reg_eqb a (negate (ZToReg 2147483648))) (reg_eqb b (negate (ZToReg
-                                                                                               1))) : bool
+                          if andb (reg_eqb a Utility.Utility.minSigned32) (reg_eqb b (negate (ZToReg
+                                                                                              1))) : bool
                           then ZToReg 0 else
                           if reg_eqb b (ZToReg 0) : bool then a else
                           rem a b in
@@ -86,6 +86,6 @@ Definition execute {p : Type -> Type} {t : Type} `{Spec.Machine.RiscvMachine p
      Spec.Decode.Divuw Spec.Decode.Divw Spec.Decode.InstructionM64 Spec.Decode.Mulw
      Spec.Decode.Remuw Spec.Decode.Remw Spec.Machine.RiscvMachine
      Spec.Machine.getRegister Spec.Machine.setRegister Utility.Utility.divu
-     Utility.Utility.maxUnsigned Utility.Utility.remu Utility.Utility.s32
-     Utility.Utility.u32
+     Utility.Utility.maxUnsigned Utility.Utility.minSigned32 Utility.Utility.remu
+     Utility.Utility.s32 Utility.Utility.u32
 *)
