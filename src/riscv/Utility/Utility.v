@@ -106,7 +106,7 @@ Section Derived.
 
   (* INT32_MIN, the signed-overflow operand of the RV64 W-form
      divisions/remainders (after truncation to 32 bits). *)
-  Definition minSigned32: t := negate (ZToReg 2147483648).
+  Definition minSigned32: t := negate (ZToReg (2^31)).
 
 End Derived.
 
